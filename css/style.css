@@ -1,1 +1,14 @@
 /* TODO: Make it awesome */
+header:first-of-type header {
+    background-color: black;
+    color: blanchedalmond;
+    position: relative;
+    text-align: center;
+}
+#deck\ col-1{
+    float: left;
+}
+
+section header {
+
+}
