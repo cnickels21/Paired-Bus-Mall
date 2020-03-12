@@ -4,6 +4,7 @@
 
 // Set up an empty cart for use on this page.
 var cart = new Cart([]);
+console.log(cart);
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -12,10 +13,13 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   var selectElement = document.getElementById('items');
   for (var i in Product.allProducts) {
-
+    var createOption =  document.createElement('option');
+    createOption.textContent = Product.allProducts[i].name;
+    selectElement.appendChild(createOption);
   }
-
+  console.log(selectElement);
 }
+
 
 // When someone submits the form, we need to add the selected item to the cart
 // object, save the whole thing back to local storage and update the screen
@@ -23,6 +27,9 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
+  // if(addSelectedItemToCart) {
+  //   return false;
+  // }
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -35,8 +42,13 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  var itemSelection = document.getElementsByTagName('option').value;
   // TODO: get the quantity
+  var itemQuantity = document.getElementById('quantity').value;
+  if (itemQuantity = 0) {
+    return false;
   // TODO: using those, add one item to the Cart
+  new CartItem
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
@@ -45,7 +57,15 @@ function updateCounter() {}
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  
+  
+  }
   // TODO: Add a new element to the cartContents div with that information
+  var cartContents = document.getElementById('cartContents');
+  var contentAddition = document.createElement('p');
+  contentAddition.textContent = `You want ${itemQuantity} of the ${itemSelection} 's`;
+  cartContents.appendChild(contentAddition);
+
 }
 
 // Set up the "submit" event listener on the form.
